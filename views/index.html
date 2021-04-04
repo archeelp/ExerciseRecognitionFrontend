@@ -11,7 +11,9 @@
   <!-- Place your code in the script tag below. You can also use an external .js file -->
   <script>
     const exe = async() => {
+        console.log("load started")
         const model = await tf.loadLayersModel('https://parekafox.herokuapp.com/TFJS_MODEL/model.json');
+        console.log("model loaded")
         const video = document.querySelector("#videoElement");
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         video.srcObject = stream;
