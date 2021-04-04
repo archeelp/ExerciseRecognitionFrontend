@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+
+
+    <!-- Place your code in the script tag below. You can also use an external .js file -->
+    <script>
+        const exe = async() => {
+            const model = await tf.loadLayersModel('localhost:3000/TFJS_MODEL/model.json');
+        }
+        exe()
+    </script>
+  </head>
+
+  <body>
+  </body>
+</html>
