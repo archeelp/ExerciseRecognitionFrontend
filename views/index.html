@@ -7,7 +7,7 @@
     <!-- Place your code in the script tag below. You can also use an external .js file -->
     <script>
         const exe = async() => {
-            const model = await tf.loadLayersModel('localhost:3000/TFJS_MODEL/model.json');
+            const model = await tf.loadLayersModel('https://parekafox.herokuapp.com/TFJS_MODEL/model.json');
         }
         exe()
     </script>
