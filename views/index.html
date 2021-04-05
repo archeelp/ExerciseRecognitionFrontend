@@ -5,8 +5,10 @@
   </head>
 
   <body>
+    <div id="loading">Loading</div>
     <video autoplay="true" id="videoElement">
     </video>
+    <h1>Output : <div id="output"></div></h1>
   </body>
   <!-- Place your code in the script tag below. You can also use an external .js file -->
   <script>
@@ -17,7 +19,8 @@
       }
       call(input) {
         return tf.tidy(() => {
-          return input;
+          console.log(tf.sub(tf.div(input[0],127.5),1).dataSync());
+          return tf.sub(tf.div(input[0],127.5),1);
         });
       }
     }
@@ -27,21 +30,28 @@
 
     let model = null;
     let video = null;
+    let output = document.getElementById("output");
+    let loading = document.getElementById("loading");
 
     const predict = async () => {
       const tfImg = tf.browser.fromPixels(video);
       const smalImg = tf.image.resizeBilinear(tfImg, [160, 160]);
       const resized = tf.cast(smalImg, 'float32');
-      const t4d = tf.tensor4d(Array.from(resized.dataSync()),[1,160,160,3])
-      const res = await tf.tensor1d(await model.predict(t4d).data()).argMax().data();
-      console.log(res);
-      requestAnimationFrame(predict)
+      const t4d = tf.tensor4d(Array.from(resized.dataSync()),[1,160,160,3]);
+      const prediction = await model.predict(t4d).data();
+      const res = await tf.tensor1d(prediction).argMax().data();
+      if(prediction[res[0]] > 0.3)
+        output.textContent = res[0] + "with accuracy" + prediction[res[0]]*100 + "%";
+      else
+        output.textContent = "No Exercise Detected" + res[0] + "with accuracy" + prediction[res[0]]*100 + "%";
+      return requestAnimationFrame(predict)
     }
 
     const exe = async() => {
         console.log("load started")
         model = await tf.loadLayersModel('https://parekafox.herokuapp.com/TFJS_MODEL/model.json');
         console.log("model loaded")
+        loading.textContent = "";
         video = document.querySelector("#videoElement");
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         video.srcObject = stream;
