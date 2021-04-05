@@ -10,15 +10,42 @@
   </body>
   <!-- Place your code in the script tag below. You can also use an external .js file -->
   <script>
+    class Lambda extends tf.layers.Layer {
+      static className = 'Lambda';
+      constructor(config) {
+        super(config);
+      }
+      call(input) {
+        return tf.tidy(() => {
+          return input;
+        });
+      }
+    }
+    tf.serialization.registerClass(Lambda);
+  </script>
+  <script>
+
+    let model = null;
+    let video = null;
+
+    const predict = async () => {
+      const tfImg = tf.browser.fromPixels(video);
+      const smalImg = tf.image.resizeBilinear(tfImg, [160, 160]);
+      const resized = tf.cast(smalImg, 'float32');
+      const t4d = tf.tensor4d(Array.from(resized.dataSync()),[1,160,160,3])
+      const res = await tf.tensor1d(await model.predict(t4d).data()).argMax().data();
+      console.log(res);
+      requestAnimationFrame(predict)
+    }
+
     const exe = async() => {
         console.log("load started")
-        const model = await tf.loadLayersModel('https://parekafox.herokuapp.com/TFJS_MODEL/model.json');
+        model = await tf.loadLayersModel('https://parekafox.herokuapp.com/TFJS_MODEL/model.json');
         console.log("model loaded")
-        const video = document.querySelector("#videoElement");
+        video = document.querySelector("#videoElement");
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         video.srcObject = stream;
-        const result = await model.predict(tf.browser.fromPixels(video));
-        console.log(result);
+        video.onloadeddata = predict;
     }
     exe()
   </script>
