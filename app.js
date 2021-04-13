@@ -10,6 +10,11 @@ app.get('/',function(req,res) {
     res.sendFile('views/index.html', {root: __dirname })
 });
 
+app.get('/playground',function(req,res) {
+    res.sendFile('views/playground.html', {root: __dirname })
+});
+
+
 app.listen(process.env.PORT || 3000,() => {
     console.log("server is running");
 })
