@@ -10,8 +10,16 @@ app.get('/',function(req,res) {
     res.sendFile('views/index.html', {root: __dirname })
 });
 
+app.get('/exerciseRecognition',function(req,res) {
+    res.sendFile('views/exerciseRecognition.html', {root: __dirname })
+});
+
 app.get('/playground',function(req,res) {
     res.sendFile('views/playground.html', {root: __dirname })
+});
+
+app.get('/posematch',function(req,res) {
+    res.sendFile('views/posematch.html', {root: __dirname })
 });
 
 
