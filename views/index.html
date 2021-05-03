@@ -1,11 +1,559 @@
 <html>
   <head>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
   </head>
 
-  <body>
-    <a href="/exerciseRecognition">Exercise Recognition</a>
+  <style>
+    body {
+      overflow-x: hidden !important;
+    }
+
+    .gallery-container .card-body {
+      text-align: center;
+    }
+
+    .home {
+      background: #cc2b5e;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #753a88, #cc2b5e);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #753a88, #cc2b5e);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .btn {
+      border-radius: 500px;
+    }
+
+    .enroll-btn {
+      padding: 10px;
+      padding-left: 35px;
+      padding-right: 35px;
+      box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149);
+      background-color: white;
+      color: black !important;
+      border: 0px;
+
+    }
+
+    .enroll-btn:hover {
+      background-color: rgb(32, 150, 32);
+      color: white !important;
+      border: 0px;
+    }
+
+    .infographic img {
+      width: 100%;
+    }
+
+    .center {
+      width: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .abc {
+      height: 100vh;
+    }
+
+    .courses-container {
+      padding-top: 50px;
+      background-color: #f1f1f1;
+      padding-bottom: 50px;
+    }
+
+    .card {
+      box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149);
+      border-radius: 15px;
+    }
+
+    .card-img-top {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .card-btn {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      box-shadow: none;
+    }
+
+    @media (max-width: 960px) {
+      .infographic {
+        display: none;
+      }
+    }
+
+    .affix .login {
+      border-color: #cc2b5e;
+      color: #cc2b5e;
+    }
+
+    .affix .signup {
+      background-color: #cc2b5e;
+      color: white;
+    }
+
+    .affix .login:hover {
+      background-color: #cc2b5e;
+      color: white;
+    }
+
+    .affix .signup:hover {
+      background-color: #cc2b5e;
+      color: white;
+    }
+
+    .login:hover {
+      color: #cc2b5e;
+    }
+
+    .signup {
+      color: #cc2b5e;
+    }
+
+    .signup:hover {
+      color: #cc2b5e;
+    }
+
+    .logocustom {
+      width: 75%;
+    }
+    .home {
+    background: #cc2b5e;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #753a88, #cc2b5e);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #753a88, #cc2b5e);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+  </style>
+
+  <body class="home">
+    <nav class="navBar">
+      <div class="container">
+        <div class="logoCustom">
+          <img id="img" src="/Images/logi.png" width="100%">
+        </div>
+        <div id="mainListDiv" class="main_list">
+
+          <div>
+            <ul class="navlinks">
+              <li><a href="/exerciseRecognition">Exercise Recognition</a></li>
+              <li><a href="/posematch">Posematch</a></li>
+              <li><a href="/playground">Playground</a></li>
+            </ul>
+          </div>
+          <div class="buttonnav">
+            <ul class="navlinks2">
+              <li><a href="#">
+                  <div class="btn btn-outline-light login">Login</div>
+                </a></li>
+              <li><a href="#">
+                  <div class="btn btn-light signup">Sign Up</div>
+                </a></li>
+            </ul>
+          </div>
+
+        </div>
+        <span class="navTriggerCustom">
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+    </nav>
+    <!-- <a href="/exerciseRecognition">Exercise Recognition</a>
       <a href="/playground">Playground</a>
-      <a href="/posematch">Pose Match</a>
+      <a href="/posematch">Pose Match</a> -->
+      <div class="container abc">
+        <div class="row abc">
+          <div class="col-lg-5" style="color: white; margin-top: 35vh;">
+            <p style="font-size: 1.7rem;"><b>One Step Closer To Your Fitness Goals</b></p>
+            <p style="font-size: 1.2rem;">
+              We, at PoseMatch, will provide you your online personal trainer that will correct your form while you exercise.</p>
+            <br><button type="button" class="btn btn-outline-light enroll-btn">Try Now</button>
+          </div>
+          <div class="col-lg-7" style="margin-top: 35vh;">
+            <div class="infographic">
+              <img
+                src="http://static1.squarespace.com/static/55bbd98ee4b002b451be7f8e/55c8f95ce4b0e637a183e816/5ebad53bb0a443408caa7491/1589323739036/well_guides_listy_assets-superJumbo.gif?format=1500w">
+            </div>
+          </div>
+        </div>
+      </div>
   </body>
 </html>
+
+<style>
+  .navBar {
+  width: 100%;
+  height: 65px;
+  position: fixed;
+  line-height: 65px;
+  text-align: center;
+  z-index: 50;
+  }
+
+  .navBar div.logoCustom {
+  float: left;
+  width: auto;
+  height: auto;
+  /* padding-left: 3rem; */
+  }
+
+  .navBar div.logoCustom a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+  }
+
+
+  .main_list{
+  display: flex;
+  justify-content: space-between;
+  }
+
+  /* .navBar div.logoCustom a:hover {
+  color: #00E676;
+  } */
+  .navlinks{
+  list-style: none;
+  display: flex;
+  float: left;
+  }
+
+  .buttonnav ul{
+  display: flex;
+  float: right;
+  list-style: none ;
+  }
+  .navBar div.main_list {
+  height: 65px;
+  float: left;
+  margin-left: 5%;
+  }
+
+
+
+  .navlinks ul {
+  width: 100%;
+  height: 65px;
+  display: flex;
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  }
+
+  .navBar div.main_list ul li {
+  width: auto;
+  height: 65px;
+  padding: 0;
+  padding-right: 3rem;
+  }
+
+  .navBar div.main_list ul li a {
+  text-decoration: none;
+  color: #fff;
+  line-height: 65px;
+  font-size: 1.1rem;
+  }
+  /*
+  .navBar div.main_list ul li a:hover {
+  color: #00E676;
+  } */
+  .home {
+  width: 100%;
+  height: 100vh;
+  background-position: center top;
+  background-size:cover;
+  }
+
+  .navTriggerCustom {
+  display: none;
+  }
+  .navBar {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+  margin: 0;
+  }
+  }
+
+  @media screen and (max-width:768px) {
+  .navTriggerCustom {
+  display: block;
+  }
+  .navBar div.logoCustom {
+  /* margin-left: 15px; */
+  }
+  .navBar div.main_list {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  }
+  .navBar div.show_list {
+  height: auto;
+  display: none;
+  }
+  .navBar div.main_list ul {
+  flex-direction: column;
+  width: 100%;
+  height: 30vh;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  /*same background color of navbar*/
+
+  }
+  .main_list{
+  background-color: #fff;
+  background-position: center top;
+
+  }
+  .navBar div.main_list ul li {
+  width: 100%;
+  color: #000 imp !important;
+  text-align: right;
+  }
+  .navBar div.main_list ul li a {
+  text-align: center;
+  width: 100%;
+  font-size: 1.5rem;
+  }
+  .navBar div.media_button {
+  display: block;
+  }
+  }
+  .navTriggerCustom {
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  margin: auto;
+  position: absolute;
+  right: 30px;
+  top: 0;
+  bottom: 0;
+  }
+
+  .navTriggerCustom i {
+  background-color: #fff;
+  border-radius: 2px;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  }
+
+  .navTriggerCustom i:nth-child(1) {
+  -webkit-animation: outT 0.8s backwards;
+  animation: outT 0.8s backwards;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+  }
+
+  .navTriggerCustom i:nth-child(2) {
+  margin: 5px 0;
+  -webkit-animation: outM 0.8s backwards;
+  animation: outM 0.8s backwards;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+  }
+
+  .navTriggerCustom i:nth-child(3) {
+  -webkit-animation: outBtm 0.8s backwards;
+  animation: outBtm 0.8s backwards;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+  }
+  .navTriggerCustom.active i:nth-child(1) {
+  -webkit-animation: inT 0.8s forwards;
+  animation: inT 0.8s forwards;
+  }
+  .navTriggerCustom.active i:nth-child(2) {
+  -webkit-animation: inM 0.8s forwards;
+  animation: inM 0.8s forwards;
+  }
+  .navTriggerCustom.active i:nth-child(3) {
+  -webkit-animation: inBtm 0.8s forwards;
+  animation: inBtm 0.8s forwards;
+  }
+  @-webkit-keyframes inM {
+  50% {
+  -webkit-transform: rotate(0deg);
+  }
+  100% {
+  -webkit-transform: rotate(45deg);
+  }
+  }
+  @keyframes inM {
+  50% {
+  transform: rotate(0deg);
+  }
+  100% {
+  transform: rotate(45deg);
+  }
+  }
+  @-webkit-keyframes outM {
+  50% {
+  -webkit-transform: rotate(0deg);
+  }
+  100% {
+  -webkit-transform: rotate(45deg);
+  }
+  }
+  @keyframes outM {
+  50% {
+  transform: rotate(0deg);
+  }
+  100% {
+  transform: rotate(45deg);
+  }
+  }
+  @-webkit-keyframes inT {
+  0% {
+  -webkit-transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+  -webkit-transform: translateY(9px) rotate(0deg);
+  }
+  100% {
+  -webkit-transform: translateY(9px) rotate(135deg);
+  }
+  }
+  @keyframes inT {
+  0% {
+  transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+  transform: translateY(9px) rotate(0deg);
+  }
+  100% {
+  transform: translateY(9px) rotate(135deg);
+  }
+  }
+  @-webkit-keyframes outT {
+  0% {
+  -webkit-transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+  -webkit-transform: translateY(9px) rotate(0deg);
+  }
+  100% {
+  -webkit-transform: translateY(9px) rotate(135deg);
+  }
+  }
+  @keyframes outT {
+  0% {
+  transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+  transform: translateY(9px) rotate(0deg);
+  }
+  100% {
+  transform: translateY(9px) rotate(135deg);
+  }
+  }
+  @-webkit-keyframes inBtm {
+  0% {
+  -webkit-transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+  -webkit-transform: translateY(-9px) rotate(0deg);
+  }
+  100% {
+  -webkit-transform: translateY(-9px) rotate(135deg);
+  }
+  }
+  @keyframes inBtm {
+  0% {
+  transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+  transform: translateY(-9px) rotate(0deg);
+  }
+  100% {
+  transform: translateY(-9px) rotate(135deg);
+  }
+  }
+  @-webkit-keyframes outBtm {
+  0% {
+  -webkit-transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+  -webkit-transform: translateY(-9px) rotate(0deg);
+  }
+  100% {
+  -webkit-transform: translateY(-9px) rotate(135deg);
+  }
+  }
+  @keyframes outBtm {
+  0% {
+  transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+  transform: translateY(-9px) rotate(0deg);
+  }
+  100% {
+  transform: translateY(-9px) rotate(135deg);
+  }
+  }
+  .affix {
+  padding: 0;
+  background-color: #111;
+  }
+  .myH2 {
+  text-align:center;
+  font-size: 2rem;
+  }
+  .myP {
+  text-align: justify;
+  padding-left:15%;
+  padding-right:15%;
+  font-size: 20px;
+  }
+  @media all and (max-width:700px){
+  .myP {
+  padding:2%;
+  }
+  }
+  @media screen and (max-width: 768px){
+  .navBar div.main_list ul li a {
+  color: #000 !important;
+  }
+  }
+  .affix {
+  background-color: #fff;
+  box-shadow: 0 0.0625rem 0.375rem 0 rgb(0 0 0 / 10%);
+  /* color: #000 !important; */
+  }
+  .affix div.logoCustom a {
+  color: #000 !important;
+  }
+  .affix .navTriggerCustom i {
+  background-color: #000 !important;
+  color: #000;
+  }
+  .affix div.main_list ul li a {
+  color: #000 !important;
+  }
+</style>
