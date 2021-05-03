@@ -16,13 +16,44 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
   </head>
   <body>
-    <div id="console"></div>
-    <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
-    <button id="class-a">Add A</button>
-    <button id="class-b">Add B</button>
-    <button id="class-c">Add C</button>
+    <center>
+          <video autoplay playsinline muted id="webcam" width="500" height="500"></video>
+          <input type="text" name="input" id="myclass">
+          <button class="btn btn-info" id="submit">Add class</button>
+          <div style="display: flex;justify-content: space-evenly;left: 50%;">
+            <button id="class-a"></button>
+            <button id="class-b"></button>
+            <button id="class-c"></button>
+          </div>
+    </center>
+    <br>
+    <br>
+    <div style="margin-left: 10%;margin-right: 10%;" id="console"></div>
     <script>
+        document.getElementById("class-a").style.display = "none";
+        document.getElementById("class-b").style.display = "none";
+        document.getElementById("class-c").style.display = "none";
         const webcamElement = document.getElementById('webcam');
+        var i = 1;
+        document.getElementById("submit").addEventListener('click',()=>{
+          var q = '';
+          if(i==1){
+            q = 'class-a';
+          }
+          if(i==2){
+          q = 'class-b';
+          }
+          if(i==3){
+          q = 'class-c';
+          }
+          const myclass = document.getElementById("myclass").value;
+          console.log(myclass);
+          var btn = document.getElementById(q); // Create a <button> element
+          btn.innerHTML = myclass; // Insert text
+          document.body.appendChild(btn);
+          document.getElementById(q).style.display = "block";
+          i++;
+        })
         const classifier = knnClassifier.create();
         async function app() {
             console.log('Loading mobilenet..');
@@ -46,9 +77,23 @@
                 const result = await classifier.predictClass(activation);
 
                 const classes = ['A', 'B', 'C'];
-                document.getElementById('console').innerText = `
-                    prediction: ${classes[result.label]}\n
-                    probability: ${result.confidences[result.label]}
+                document.getElementById('console').innerHTML = `
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">PREDICTION</th>
+                          <th scope="col">PROBABLITY</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>${classes[result.label]}</td>
+                          <td>${result.confidences[result.label]}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                 `;
                 img.dispose();
                 }
